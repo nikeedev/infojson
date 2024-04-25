@@ -1,0 +1,23 @@
+@import url('https://rsms.me/inter/inter.css');
+
+body {
+    font-family: Inter;
+}
+
+#main_data {
+    padding: 10px;
+}
+
+#output input {
+    width: 400px;
+    height: 300px;
+}
+
+#setting, #desc {
+    border: 1px solid black;
+    display: flex;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}

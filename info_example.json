@@ -1,0 +1,49 @@
+{
+  "AV": "1",
+  "name": "Change theme on nikeedev's website",
+  "description": [
+    ["text", "Changes the theme on the "],
+    [
+      "link",
+      {
+        "text": "nikeedev.stio.studio",
+        "url": "https://nikeedev.stio.studio"
+      }
+    ],
+    [
+      "text",
+      " website, to their previous styles. Used also for testing purposes, so if you see that it isn't changing the theme"
+    ],
+    ["br"],
+    ["text", "Choose a theme:"],
+    [
+      "dropdown",
+      {
+        "name": "themes",
+        "options": [
+          "None",
+          "\"IDK, but it looks nice\" theme",
+          "The new old (Gruvbox)",
+          "Old",
+          "Vintage",
+          "Purple",
+          "Sunset"
+        ]
+      }
+    ]
+  ],
+  "credits": [
+    {
+      "userID": 4,
+      "contributed": {
+        "code": 20
+      }
+    }
+  ],
+  "tags": ["community"],
+  "versionAdded": "1.0.0",
+  "code": {
+    "onTab": "code.js",
+    "IF_onTab": "onlyif.js"
+  }
+}

@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aioewa's Info.json Generator</title>
     <meta name="description" content="Generate your info.json for your Aioewa addon easier with this generator">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Info.json Generator</h1>
     <span id="main_data">
         <div id="input">
-            <p>Aioewa Info.json Version:</p> <input type="text" name="AV" id="AV_input" />
+            
         </div>
+        <!-- <button onclick="add_setting()">Add Setting</button> -->
         <br>
+        <button onclick="generate()">Generate to <code>info.json</code> &gt;</button>
         <div id="output">
             <h4>Output (click to copy to clipboard): </h4>
-            <input id="output_box" type="text" readOnly onClick="generate()" value="https://github.com/Aioewa" />
+            <input id="output_box" type="text" readOnly onClick="copy()" value="https://github.com/Aioewa" />
             <p id="copied" style="display: none;">Copied to the clipboard!</p>
         </div>
     </span>
