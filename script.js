@@ -56,23 +56,7 @@ const infojson_types = {
 
 let main_data = document.getElementById("main_data")
 let input = document.getElementById("input")
-let desc = document.createElement("div");
-desc.id = "descs";
 
-function add_description() {
-    let div = document.createElement("div");
-    div.id = "setting"
-    let desc_text = document.createElement("span")
-    desc_text
-    desc_text.innerText = "Description: "
-    let desc_input = document.createElement("input")
-    desc_input.type = "text"
-    desc_input.id = "desc_input";
-    div.appendChild(desc_text)
-    div.appendChild(desc_input)
-
-    desc.appendChild(div);
-}
 
 function add_setting(type) {
     let div = document.createElement("div");
@@ -119,8 +103,10 @@ function add_setting(type) {
 window.onload = () => {
     add_setting(infojson_types.AV)
     add_setting(infojson_types.name)
-    input.appendChild(desc);
-    add_description()
+    let info = document.createElement("div");
+    info.id = "setting";
+    info.innerText = "You have to manually add the description of the addon."
+    input.appendChild(info)
     add_setting(infojson_types.credits)
     add_setting(infojson_types.tags)
     add_setting(infojson_types.version_added)
@@ -132,7 +118,7 @@ function generate() {
     let settings = document.querySelectorAll("#setting")
 
     settings.forEach((setting) => {
-        console.log(setting.children[1].id);
+        // console.log(setting.children[1].id);
 
         switch (setting.children[1].id) {
             case "aioewa_info.json_version":
@@ -143,12 +129,8 @@ function generate() {
                 output.name = setting.children[1].value;
                 break;
                 
-            case "desc_input":
-                // output["name"] = setting.children[1].value;
-                break;
-
             case "your_aioewa_user_id":
-                output.credits = [{id: setting.children[1].value}];
+                output.credits = [{userID: setting.children[1].value}];
                 break;
 
             case "tags_for_your_addon_(separate_with_commas)":
@@ -159,6 +141,12 @@ function generate() {
                 output.versionAdded = setting.children[1].value;
                 break;
         }
+    })
+    
+    output.description = [];
+
+    document.querySelectorAll(".desc").forEach((element) => {
+        output.description.push([element.children[1].value, element.children[2].value])
     })
 
     document.getElementById("output_box").innerText = JSON.stringify(output, null, 4);
