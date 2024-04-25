@@ -1,18 +1,12 @@
 const copy = () => {
     let copyText = document.getElementById("output_box");
 
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobile devices
-    navigator.clipboard.writeText(copyText.value);
+    navigator.clipboard.writeText(copyText.innerText);
 
     // Alert the copied text
     let copied = document.getElementById("copied");
 
-    copied.style.display = "block";
-
-    setTimeout(() => {
-        copied.style.display = "none";
-    }, 3000)
+    alert("Copied to clipboard")
 }
 
 const infojson_types = {
@@ -41,7 +35,12 @@ const infojson_types = {
     tags: {
         text: "Tags for your addon (separate with commas)",
         input_type: "text",
-        value: "new, "
+        value: "new"
+    },
+    version_added: {
+        text: "The version of Aioewa the addon was introduced",
+        input_type: "text",
+        value: "1.0.0"
     }
 }
 
@@ -124,6 +123,7 @@ window.onload = () => {
     add_description()
     add_setting(infojson_types.credits)
     add_setting(infojson_types.tags)
+    add_setting(infojson_types.version_added)
 }
 
 let output = {};
@@ -136,23 +136,30 @@ function generate() {
 
         switch (setting.children[1].id) {
             case "aioewa_info.json_version":
-                output["AV"] = setting.children[1].value;
+                output.AV = setting.children[1].value;
                 break;
 
             case "name_of_the_addon":
-                output["name"] = setting.children[1].value;
+                output.name = setting.children[1].value;
                 break;
                 
             case "desc_input":
-                output["name"] = setting.children[1].value;
+                // output["name"] = setting.children[1].value;
                 break;
 
             case "your_aioewa_user_id":
+                output.credits = [{id: setting.children[1].value}];
                 break;
 
             case "tags_for_your_addon_(separate_with_commas)":
+                output.tags = setting.children[1].value.trim().split(",").filter((tag) => tag.trim() != "").map(x => x.trim());
                 break;
-
+            
+            case "the_version_of_aioewa_the_addon_was_introduced":
+                output.versionAdded = setting.children[1].value;
+                break;
         }
     })
+
+    document.getElementById("output_box").innerText = JSON.stringify(output, null, 4);
 }
