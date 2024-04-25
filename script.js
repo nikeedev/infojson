@@ -104,7 +104,7 @@ window.onload = () => {
     add_setting(infojson_types.AV)
     add_setting(infojson_types.name)
     let info = document.createElement("div");
-    info.id = "setting";
+    info.id = "desc";
     info.innerText = "You have to manually add the description of the addon."
     input.appendChild(info)
     add_setting(infojson_types.credits)
@@ -143,11 +143,5 @@ function generate() {
         }
     })
     
-    output.description = [];
-
-    document.querySelectorAll(".desc").forEach((element) => {
-        output.description.push([element.children[1].value, element.children[2].value])
-    })
-
     document.getElementById("output_box").innerText = JSON.stringify(output, null, 4);
 }
