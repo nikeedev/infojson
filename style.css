@@ -4,6 +4,10 @@ body {
     font-family: Inter;
 }
 
+h1 {
+    font-size: 25px;
+}
+
 #main_data {
     padding: 10px;
 }
@@ -13,11 +17,36 @@ body {
     height: 300px;
 }
 
-#setting, #desc {
+#setting, #desc, #descs {
     border: 1px solid black;
     display: flex;
     width: fit-content;
     padding: 8px;
     border-radius: 10px;
     margin-bottom: 20px;
+}
+
+#desc span {
+    padding-right: 5px;
+}
+
+#descs {
+    display: block;
+    width: fit-content;
+    height: auto;
+}
+
+button {
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    font-weight: bolder;
+    font-family: Inter;
+    font-size: 20px;
+}
+
+input {
+    margin-right: 0px;
 }
